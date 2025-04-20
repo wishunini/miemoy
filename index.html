@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Event Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+        }
+
+        #event-form {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #event-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: #ff69b4;
+        }
+
+        #event-form::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: #ff69b4;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="date"], input[type="time"] {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 0 10px;
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        #event-details {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            
+        }
+
+        .ribbon {
+            position: absolute;
+            top: 10px;
+            right: -50px;
+            transform: rotate(45deg);
+            background-color: #ff69b4;
+            color: #fff;
+            padding: 5px 50px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Virtual Event Planner</h1>
+    <form id="event-form">
+        <div class="ribbon">Plan Your Event</div>
+        <label for="event-name">Event Name:</label>
+        <input type="text" id="event-name" required>
+
+        <label for="event-date">Event Date:</label>
+        <input type="date" id="event-date" required>
+
+        <label for="event-time">Event Time:</label>
+        <input type="time" id="event-time" required>
+
+        <label for="event-location">Event Location:</label>
+        <input type="text" id="event-location" required>
+
+        <button id="plan-event">Plan Event</button>
+    </form>
+
+    <div id="event-details"></div>
+
+    <script>
+        const eventForm = document.getElementById('event-form');
+        const eventDetails = document.getElementById('event-details');
+
+        eventForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const eventName = document.getElementById('event-name').value;
+            const eventDate = document.getElementById('event-date').value;
+            const eventTime = document.getElementById('event-time').value;
+            const eventLocation = document.getElementById('event-location').value;
+
+            const eventHtml = `
+                <h2>Event Details</h2>
+                <p>Event Name: ${eventName}</p>
+                <p>Event Date: ${eventDate}</p>
+                <p>Event Time: ${eventTime}</p>
+                <p>Event Location: ${eventLocation}</p>
+            `;
+
+            eventDetails.innerHTML = eventHtml;
+        });
+    </script>
+</body>
+  </html>
